@@ -1,0 +1,2 @@
+SH_LIB_DIR=..
+DEBUG='Y'

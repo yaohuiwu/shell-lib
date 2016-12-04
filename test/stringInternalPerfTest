@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+. ../string.sh
+
+i=0
+len=0
+s="hello"
+times=100000
+
+while [ $i -lt $times ]
+do
+    len=${#s}
+    let i=i+1
+done
+
+echo "cost ${SECONDS} s to caculate the length of 'hello' in $times times"

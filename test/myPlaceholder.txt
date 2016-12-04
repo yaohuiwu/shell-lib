@@ -1,0 +1,3 @@
+#my1.txt
+yourName=foo
+yourCompany=foo company
