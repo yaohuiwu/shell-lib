@@ -23,7 +23,7 @@ echo "'$emptys' after trimmed left:'$s'"
 unset s
 
 strTrimRight "s" "$s1"
-echo "'$2' after trimmed:'$s'"
+echo "'$s1' after trimmed right:'$s'"
 unset s
 
 strTrimRight 's' "$emptys"
@@ -32,4 +32,20 @@ unset s
 
 strTrim 's' "$s1"
 echo "'$s1' after trimmed:'$s'"
+unset s
+
+strStartWith 's' "$s1" "  h"
+echo "'$s1' start with '  h'? $s"
+unset s
+
+strStartWith 's' "$s1" "h"
+echo "'$s1' start with 'h'? $s"
+unset s
+
+strStartWith 's' "$s1" "  hello world  "
+echo "'$s1' start with '  hello world  '? $s"
+
+unset s
+strStartWith 's' "$s1" ""
+echo "'$s1' start with ''? $s"
 unset s

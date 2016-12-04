@@ -70,11 +70,46 @@ strTrimRight(){
 #
 strTrim(){
     v="$2"
-    strTrimLeft "s" "$v"
-    echo "trim left:'${s}'"
+    strTrimLeft "$1" "$v"
+    echo "trim left:'${!1}'"
 
-    strTrimRight "s" "${s}"
-    echo "trim right:'${s}'"
-    eval "$1='${s}'"
-    unset s
+    strTrimRight "$1" "${s}"
+    echo "trim right:'${!1}'"
+    eval "$1='${!1}'"
+}
+
+# check if a string starts with another string.
+#
+# $1 : the name of the result variable. 'True' or 'False'
+# $2 : the orginal string.
+# $3 : the substring. Always return 'True' if $3 is ''
+#
+#
+strStartWith(){
+    lenFull=${#2}
+    lenSub=${#3}
+
+    if [ $lenFull -lt $lenSub ];then
+	eval "$1='False'"
+	return
+    fi
+
+    echo "$lenFull : $lenSub"
+
+    i=0
+    while [ $i -lt $lenSub -a $i -lt $lenFull ]
+    do
+	if [ "${2:${i}:1}" != "${3:${i}:1}" ];then
+	    break
+	fi
+	let i=i+1
+    done
+    
+    echo "i:$i"
+    
+    startW='False'
+    if [ $i -eq $lenSub ];then
+	startW='True'
+    fi
+    eval "$1=$startW"
 }
